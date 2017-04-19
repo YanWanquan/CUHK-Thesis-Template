@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+lualatex main && biber main && lualatex main && lualatex main
