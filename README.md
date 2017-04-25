@@ -24,6 +24,13 @@ luaotfload-tool --update
 luaotfload-tool --find="STFangsong"
 ```
 
+## Debug
+If `file not found` issue happens during the biber compliation, you may have to delete the relevant cache files.
+
+```bash
+rm -rf `biber --cache`
+```
+
 ## License
 
 MIT License.
