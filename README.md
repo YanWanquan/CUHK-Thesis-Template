@@ -16,18 +16,12 @@ or
 ```
 
 ### Font
-If missing font issues happen during the whole project compilation, please manually check whether the font 'cwTeXFangSong' is installed. If you are using MacOS, the font should be found within '/Library/Fonts/'. If not, please install it manually (put it into the directory mentioned above).
-
-The font can be downloaded from the following link:
-
-```bash
-https://github.com/google/fonts/blob/master/ofl/cwtexfangsong/cwTeXFangSong-zhonly.ttf
-```
+If missing font issues happen during the whole project compilation, please manually check whether the font 'STFangsong' is installed. If you are using MacOS, the font should be found within '/Library/Fonts/'. If not, please install it manually.
 
 ```bash
 export OSFONTDIR="$HOME/FontExplorer X/Font Library//"
 luaotfload-tool --update
-luaotfload-tool --find="cwTeXFangSong"
+luaotfload-tool --find="STFangsong"
 ```
 
 ## Debug

@@ -1,22 +1,25 @@
-\documentclass[12pt,a4paper,notitlepage,oneside]{report}
+% !TEX engine = lualatex
+\documentclass[12pt,a4paper,notitlepage,twoside]{report}
 
 % packages and custom commands
 \input{style/preamble}
 
 \usepackage{geometry}
-\geometry{a4paper, left=45mm, right=20mm}
+\geometry{a4paper, left=40mm, right=20mm}
 
-% clash with beamer
-\usepackage[hidelinks,pdfusetitle]{hyperref}
+% clash with beamer [CJKbookmarks,unicode] for Chinese in bookmarks
+\usepackage[hidelinks,pdfusetitle,CJKbookmarks,unicode]{hyperref}
 
-\usepackage[backend=biber, style=numeric, maxbibnames=99, mcite=true]{biblatex}
+\usepackage[backend=biber, style=bwl-FU, maxbibnames=99, maxcitenames=1, uniquelist=false, uniquename=false, mcite=true]{biblatex}
 \addbibresource{bibliography/thesis.bib}
+
+\usepackage{tocbibind} % Add list figures and list tables to toc
 
 \begin{document}
 
 \title{CUHK Thesis Template}
 \author{John Doe}
-\date{April 2017}
+\date{August 2017}
 \committee{
   Professor Leonard Leakey Hofstadter (Chair)\\
   Professor Sheldon Lee Cooper (Thesis Supervisor)\\
@@ -26,26 +29,32 @@
 \maketitle
 \thispagestyle{empty}
 
+{\setstretch{2}
 % Small Roman numerals (i, ii, iii, ...) are used for the preliminaries (e.g., abstract, acknowledgement, table of contents).
 \cleardoublepage \pagenumbering{roman} \setcounter{page}{1}
+\phantomsection  \include{sections/acknowledgement}
 
-\include{sections/abstract}
-\cleardoublepage
-\include{sections/abstract-chinese}
-
+% Small Roman numerals (i, ii, iii, ...) are used for the preliminaries (e.g., abstract, acknowledgement, table of contents).
 \cleardoublepage \pagenumbering{roman} \setcounter{page}{1}
                  \tableofcontents
+\cleardoublepage \phantomsection \include{sections/abstract}
+\cleardoublepage \phantomsection \include{sections/abstract-chinese}
 \cleardoublepage \listoffigures
 \cleardoublepage \listoftables
+\cleardoublepage \phantomsection \include{sections/symbols-and-acronyms}
 
 % Arabic numbers (1,2,3, ...) are used for the text, appendices and bibliography
 \cleardoublepage \pagenumbering{arabic} \setcounter{page}{1}
-
                  \include{sections/introduction}
-\cleardoublepage \include{sections/related-work}
-\cleardoublepage \include{sections/content}
+\cleardoublepage \include{sections/section1}
+\cleardoublepage \include{sections/section2}
 \cleardoublepage \include{sections/conclusion}
-
+% Publication
+\cleardoublepage \phantomsection \include{sections/publications}
+% Appendix
+\cleardoublepage \phantomsection \include{sections/appendices}
+% Bibliography
 \cleardoublepage \printbibliography[heading=bibintoc]
+}
 
 \end{document}

@@ -1,5 +1,5 @@
 % provide the 1 binary function symbol
-\usepackage{dsfont}
+% \usepackage{dsfont}
 
 % table
 \usepackage{booktabs}
@@ -8,19 +8,40 @@
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}r@{}}#2\end{tabular}}
 
 % math
-\usepackage{amsmath}
+\usepackage[cmex10]{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{gensymb}
 % double brackets like \llbracket
 \usepackage{stmaryrd}
+\usepackage{bm}
+\usepackage[short]{optidef} % for argmini environment
+
+% algorithm
+\usepackage[ruled,linesnumbered]{algorithm2e} % for pseudocode
 
 % images
 \usepackage{graphicx}
-\graphicspath{{images/}{../images/}}
+\graphicspath{{./figures/science/}{./figures/nature/}{./figures/cell/}{./figures/pans/}}
+\usepackage{caption}
+\usepackage[labelformat=empty]{subcaption}
+\usepackage{float}
 
 \usepackage{times}
 \usepackage{url}
 \usepackage{latexsym}
+
+% appendices
+\usepackage{appendix} % generate appendices
+\usepackage[explicit]{titlesec}
+\let\oldappendices\appendices
+\renewcommand{\appendices}{%
+  \oldappendices
+  % https://tex.stackexchange.com/q/58295/5764
+  \titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{##1\ \thesection}
+  \renewcommand{\thesection}{\Roman{section}}%
+}
 
 % tikz
 \usepackage{tikz}
@@ -34,10 +55,11 @@
 \newcommand{\rdf}[1]{{\scriptsize{\sffamily #1}}}
 \newcommand{\tf}[1]{\ensuremath{_{: {#1}}}}
 
-\usepackage[algoruled]{style/algorithm2e}
-\usepackage[subrefformat=parens,labelformat=parens]{subfig}
+% \usepackage[algoruled]{style/algorithm2e}
+% \usepackage[subrefformat=parens,labelformat=parens]{subfig}
 
 \usepackage{standalone}
+\usepackage{microtype}
 
 % larger line height
 \usepackage{setspace}
@@ -48,7 +70,7 @@
 % use LuaTex
 \usepackage{luatexja-fontspec}
 \setmainfont{Times New Roman}
-\setmainjfont{cwTeXFangSong}
+\setmainjfont{FandolSong}
 
 
 % used in the ACL paper
@@ -113,3 +135,11 @@
 
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{property}{Property}
+
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
